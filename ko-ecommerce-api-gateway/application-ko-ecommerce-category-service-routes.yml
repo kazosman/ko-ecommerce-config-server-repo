@@ -1,0 +1,25 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+      - id: category-service-get-by-id
+        uri: lb://ko-ecommerce-category-service
+        predicates:
+        - Path=/api/v1/categories/**
+        - Method=GET
+        filters:
+#        - RemoveRequestHeader=Cookie
+        - RewritePath=/ko-ecommerce-category-service/(?<segment>.*), /$\{segment}
+        
+#      - id: category-service-list
+#        uri: lb://ko-ecommerce-category-service
+#        predicates:
+#        - Path=/api/v1/categories
+#        - Method=GET
+#        filters:
+##        - RemoveRequestHeader=Cookie
+#        - RewritePath=/ko-ecommerce-category-service/(?<segment>.*), /$\{segment}
