@@ -20,3 +20,11 @@ spring:
         - Method=GET
         filters:
         - RewritePath=/ko-ecommerce-category-service/(?<segment>.*), /$\{segment}
+        
+      - id: category-service-create
+        uri: lb://ko-ecommerce-category-service
+        predicates:
+        - Path=/ko-ecommerce-category-service/api/v1/categories
+        - Method=POST
+        filters:
+        - RewritePath=/ko-ecommerce-category-service/(?<segment>.*), /$\{segment}
