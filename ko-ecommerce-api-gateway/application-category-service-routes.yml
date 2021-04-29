@@ -3,7 +3,6 @@ spring:
     gateway:
       discovery:
         locator:
-          enabled: true
           lower-case-service-id: true
       routes:
       - id: category-service-get-by-id
