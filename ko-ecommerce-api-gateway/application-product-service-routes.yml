@@ -5,6 +5,14 @@ spring:
         locator:
           lower-case-service-id: true
       routes:
+      - id: category-service-get-by-id
+        uri: lb://ko-ecommerce-category-service
+        predicates:
+        - Path=/ko-ecommerce-category-service/api/v1/categories/*
+        - Method=GET
+        filters:
+        - RewritePath=/ko-ecommerce-category-service/(?<segment>.*), /$\{segment}
+        
       - id: product-service-get-by-id
         uri: lb://ko-ecommerce-product-service
         predicates:
