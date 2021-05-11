@@ -5,8 +5,7 @@ spring:
         locator:
           lower-case-service-id: true
       routes:
-      
-      
+            
       - id: category-service-get-by-id
         uri: lb://ko-ecommerce-category-service
         predicates:
@@ -54,55 +53,6 @@ spring:
         - Method=DELETE
         filters:
         - RewritePath=/ko-ecommerce-category-service/(?<segment>.*), /$\{segment}
-        
-        
-      - id: product-service-get-by-id
-        uri: lb://ko-ecommerce-product-service
-        predicates:
-        - Path=/ko-ecommerce-product-service/api/v1/products/*
-        - Method=GET
-        filters:
-        - RewritePath=/ko-ecommerce-product-service/(?<segment>.*), /$\{segment}
-        
-      - id: product-service-get-by-code
-        uri: lb://ko-ecommerce-product-service
-        predicates:
-        - Path=/ko-ecommerce-product-service/api/v1/products/productCode/*
-        - Method=GET
-        filters:
-        - RewritePath=/ko-ecommerce-product-service/(?<segment>.*), /$\{segment}
-        
-      - id: product-service-list
-        uri: lb://ko-ecommerce-product-service
-        predicates:
-        - Path=/ko-ecommerce-product-service/api/v1/products
-        - Method=GET
-        filters:
-        - RewritePath=/ko-ecommerce-product-service/(?<segment>.*), /$\{segment}
-        
-      - id: product-service-create
-        uri: lb://ko-ecommerce-product-service
-        predicates:
-        - Path=/ko-ecommerce-product-service/api/v1/products
-        - Method=POST
-        filters:
-        - RewritePath=/ko-ecommerce-product-service/(?<segment>.*), /$\{segment}
-        
-      - id: product-service-update
-        uri: lb://ko-ecommerce-product-service
-        predicates:
-        - Path=/ko-ecommerce-product-service/api/v1/products/*
-        - Method=PUT
-        filters:
-        - RewritePath=/ko-ecommerce-product-service/(?<segment>.*), /$\{segment}
-        
-      - id: product-service-delete
-        uri: lb://ko-ecommerce-product-service
-        predicates:
-        - Path=/ko-ecommerce-product-service/api/v1/products/*
-        - Method=DELETE
-        filters:
-        - RewritePath=/ko-ecommerce-product-service/(?<segment>.*), /$\{segment}
         
 
         
