@@ -6,7 +6,6 @@ spring:
           lower-case-service-id: true
       routes:
       
-      #CATEGORY SERVICE ROUTES
       
       - id: category-service-get-by-id
         uri: lb://ko-ecommerce-category-service
@@ -56,7 +55,6 @@ spring:
         filters:
         - RewritePath=/ko-ecommerce-category-service/(?<segment>.*), /$\{segment}
         
-      # PRODUCT SERVICE ROUTES
         
       - id: product-service-get-by-id
         uri: lb://ko-ecommerce-product-service
@@ -105,4 +103,6 @@ spring:
         - Method=DELETE
         filters:
         - RewritePath=/ko-ecommerce-product-service/(?<segment>.*), /$\{segment}
+        
+
         
