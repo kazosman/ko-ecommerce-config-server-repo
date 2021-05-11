@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          lower-case-service-id: true
+      routes:
+      - id: product-service-get-by-id
+        uri: lb://ko-ecommerce-product-service
+        predicates:
+        - Path=/ko-ecommerce-product-service/api/v1/products/*
+        - Method=GET
+        filters:
+        - RewritePath=/ko-ecommerce-product-service/(?<segment>.*), /$\{segment}
+        
