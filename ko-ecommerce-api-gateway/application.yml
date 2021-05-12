@@ -15,6 +15,22 @@ spring:
         - Method=GET
         filters:
         - RewritePath=/ko-ecommerce-category-service/(?<segment>.*), /$\{segment}
+#        - name: category-service-fallback-cb
+#          args:
+#            name: category-service-fallback-cb
+#            fallbackUri: forward:/ko-ecommerce-category-service-fallback/api/v1/categories-fallback
+#        - RewritePath=/consumingServiceEndpoint, /backingServiceEndpoint
+        
+      
+      #CATEGORY SERVICE FALLBACK ROUTES
+      - id: category-service-fallback-get-by-id
+        uri: lb://ko-ecommerce-category-service-fallback
+        predicates:
+        - Path=/ko-ecommerce-category-service-fallback/api/v1/categories/*
+        - Method=GET
+        filters:
+        - RewritePath=/ko-ecommerce-category-service-fallback/(?<segment>.*), /$\{segment}
+        
         
       - id: category-service-get-by-name
         uri: lb://ko-ecommerce-category-service
@@ -55,6 +71,8 @@ spring:
         - Method=DELETE
         filters:
         - RewritePath=/ko-ecommerce-category-service/(?<segment>.*), /$\{segment}
+      
+      
         
       #PRODUCT SERVICE ROUTES
         
