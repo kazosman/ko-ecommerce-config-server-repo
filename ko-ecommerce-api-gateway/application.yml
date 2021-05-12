@@ -18,7 +18,7 @@ spring:
         - name: CircuitBreaker
           args:
             name: category-service-fallback-get-by-id
-#            fallbackUri: forward:/ko-ecommerce-category-service-fallback/api/v1/categories-fallback
+            fallbackUri: forward:/ko-ecommerce-category-service-fallback/api/v1/categories-fallback
 #        - RewritePath=/ko-ecommerce-category-service-fallback/(?<segment>.*), /$\{segment}
         
       
