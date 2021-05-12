@@ -15,10 +15,10 @@ spring:
         - Method=GET
         filters:
         - RewritePath=/ko-ecommerce-category-service/(?<segment>.*), /$\{segment}
-        - name: CircuitBreaker
-          args:
-            name: category-service-fallback-get-by-id
-            fallbackUri: forward:/ko-ecommerce-category-service-fallback/api/v1/categories-fallback
+#        - name: CircuitBreaker
+#          args:
+#            name: category-service-fallback-get-by-id
+#            fallbackUri: forward:/ko-ecommerce-category-service-fallback/api/v1/categories-fallback
 #        - RewritePath=/ko-ecommerce-category-service-fallback/(?<segment>.*), /$\{segment}
         
       
@@ -125,29 +125,29 @@ spring:
         - RewritePath=/ko-ecommerce-product-service/(?<segment>.*), /$\{segment}
         
         
-resilience4j.circuitbreaker:
-  configs:
-    default:
-      slidingWindowSize: 10
-      minimumNumberOfCalls: 5
-      permittedNumberOfCallsInHalfOpenState: 3
-      automaticTransitionFromOpenToHalfOpenEnabled: true
-      waitDurationInOpenState: 2s
-      failureRateThreshold: 50
-      eventConsumerBufferSize: 10
-      recordExceptions:
-        - org.springframework.web.client.HttpServerErrorException
-        - java.io.IOException
-      ignoreExceptions:
-        - java.lang.IllegalStateException
-    shared:
-      slidingWindowSize: 100
-      permittedNumberOfCallsInHalfOpenState: 30
-      waitDurationInOpenState: 1s
-      failureRateThreshold: 50
-      eventConsumerBufferSize: 10
-      ignoreExceptions:
-        - java.lang.IllegalStateException
-  instances:
-    backendA:
-      baseConfig: default
+#resilience4j.circuitbreaker:
+#  configs:
+#    default:
+#      slidingWindowSize: 10
+#      minimumNumberOfCalls: 5
+#      permittedNumberOfCallsInHalfOpenState: 3
+#      automaticTransitionFromOpenToHalfOpenEnabled: true
+#      waitDurationInOpenState: 2s
+#      failureRateThreshold: 50
+#      eventConsumerBufferSize: 10
+#      recordExceptions:
+#        - org.springframework.web.client.HttpServerErrorException
+#        - java.io.IOException
+#      ignoreExceptions:
+#        - java.lang.IllegalStateException
+#    shared:
+#      slidingWindowSize: 100
+#      permittedNumberOfCallsInHalfOpenState: 30
+#      waitDurationInOpenState: 1s
+#      failureRateThreshold: 50
+#      eventConsumerBufferSize: 10
+#      ignoreExceptions:
+#        - java.lang.IllegalStateException
+#  instances:
+#    backendA:
+#      baseConfig: default
