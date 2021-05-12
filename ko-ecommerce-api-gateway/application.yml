@@ -26,7 +26,7 @@ spring:
       - id: category-service-fallback-get-by-id
         uri: lb://ko-ecommerce-category-service-fallback
         predicates:
-        - Path=/ko-ecommerce-category-service-fallback/api/v1/categories/*
+        - Path=/ko-ecommerce-category-service-fallback/api/v1/categories-fallback/*
         - Method=GET
         filters:
         - RewritePath=/ko-ecommerce-category-service-fallback/(?<segment>.*), /$\{segment}
