@@ -1,110 +1,110 @@
-spring:
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          lower-case-service-id: true
-      routes:
-      
-      #CATEGORY SERVICE ROUTES
-        
-      - id: category-service-get-by-id
-        uri: lb://ko-ecommerce-category-service
-        predicates:
-        - Path=/ko-ecommerce-category-service/api/v1/categories/*
-        - Method=GET
-        filters:
-        - RewritePath=/ko-ecommerce-category-service/(?<segment>.*), /$\{segment}
-                
-      - id: category-service-get-by-name
-        uri: lb://ko-ecommerce-category-service
-        predicates:
-        - Path=/ko-ecommerce-category-service/api/v1/categories/categoryName/*
-        - Method=GET
-        filters:
-        - RewritePath=/ko-ecommerce-category-service/(?<segment>.*), /$\{segment}
-        
-      - id: category-service-list
-        uri: lb://ko-ecommerce-category-service
-        predicates:
-        - Path=/ko-ecommerce-category-service/api/v1/categories
-        - Method=GET
-        filters:
-        - RewritePath=/ko-ecommerce-category-service/(?<segment>.*), /$\{segment}
-        
-      - id: category-service-create
-        uri: lb://ko-ecommerce-category-service
-        predicates:
-        - Path=/ko-ecommerce-category-service/api/v1/categories
-        - Method=POST
-        filters:
-        - RewritePath=/ko-ecommerce-category-service/(?<segment>.*), /$\{segment}
-        
-      - id: category-service-update
-        uri: lb://ko-ecommerce-category-service
-        predicates:
-        - Path=/ko-ecommerce-category-service/api/v1/categories/*
-        - Method=PUT
-        filters:
-        - RewritePath=/ko-ecommerce-category-service/(?<segment>.*), /$\{segment}
-        
-      - id: category-service-delete
-        uri: lb://ko-ecommerce-category-service
-        predicates:
-        - Path=/ko-ecommerce-category-service/api/v1/categories/*
-        - Method=DELETE
-        filters:
-        - RewritePath=/ko-ecommerce-category-service/(?<segment>.*), /$\{segment}
-      
-      
-        
-      #PRODUCT SERVICE ROUTES
-        
-      - id: product-service-get-by-id
-        uri: lb://ko-ecommerce-product-service
-        predicates:
-        - Path=/ko-ecommerce-product-service/api/v1/products/*
-        - Method=GET
-        filters:
-        - RewritePath=/ko-ecommerce-product-service/(?<segment>.*), /$\{segment}
-        
-      - id: product-service-get-by-code
-        uri: lb://ko-ecommerce-product-service
-        predicates:
-        - Path=/ko-ecommerce-product-service/api/v1/products/productCode/*
-        - Method=GET
-        filters:
-        - RewritePath=/ko-ecommerce-product-service/(?<segment>.*), /$\{segment}
-        
-      - id: product-service-list
-        uri: lb://ko-ecommerce-product-service
-        predicates:
-        - Path=/ko-ecommerce-product-service/api/v1/products
-        - Method=GET
-        filters:
-        - RewritePath=/ko-ecommerce-product-service/(?<segment>.*), /$\{segment}
-        
-      - id: product-service-create
-        uri: lb://ko-ecommerce-product-service
-        predicates:
-        - Path=/ko-ecommerce-product-service/api/v1/products
-        - Method=POST
-        filters:
-        - RewritePath=/ko-ecommerce-product-service/(?<segment>.*), /$\{segment}
-        
-      - id: product-service-update
-        uri: lb://ko-ecommerce-product-service
-        predicates:
-        - Path=/ko-ecommerce-product-service/api/v1/products/*
-        - Method=PUT
-        filters:
-        - RewritePath=/ko-ecommerce-product-service/(?<segment>.*), /$\{segment}
-        
-      - id: product-service-delete
-        uri: lb://ko-ecommerce-product-service
-        predicates:
-        - Path=/ko-ecommerce-product-service/api/v1/products/*
-        - Method=DELETE
-        filters:
-        - RewritePath=/ko-ecommerce-product-service/(?<segment>.*), /$\{segment}
-        
+#spring:
+#  cloud:
+#    gateway:
+#      discovery:
+#        locator:
+#          lower-case-service-id: true
+#      routes:
+#      
+#      #CATEGORY SERVICE ROUTES
+#        
+#      - id: category-service-get-by-id
+#        uri: lb://ko-ecommerce-category-service
+#        predicates:
+#        - Path=/ko-ecommerce-category-service/api/v1/categories/*
+#        - Method=GET
+#        filters:
+#        - RewritePath=/ko-ecommerce-category-service/(?<segment>.*), /$\{segment}
+#                
+#      - id: category-service-get-by-name
+#        uri: lb://ko-ecommerce-category-service
+#        predicates:
+#        - Path=/ko-ecommerce-category-service/api/v1/categories/categoryName/*
+#        - Method=GET
+#        filters:
+#        - RewritePath=/ko-ecommerce-category-service/(?<segment>.*), /$\{segment}
+#        
+#      - id: category-service-list
+#        uri: lb://ko-ecommerce-category-service
+#        predicates:
+#        - Path=/ko-ecommerce-category-service/api/v1/categories
+#        - Method=GET
+#        filters:
+#        - RewritePath=/ko-ecommerce-category-service/(?<segment>.*), /$\{segment}
+#        
+#      - id: category-service-create
+#        uri: lb://ko-ecommerce-category-service
+#        predicates:
+#        - Path=/ko-ecommerce-category-service/api/v1/categories
+#        - Method=POST
+#        filters:
+#        - RewritePath=/ko-ecommerce-category-service/(?<segment>.*), /$\{segment}
+#        
+#      - id: category-service-update
+#        uri: lb://ko-ecommerce-category-service
+#        predicates:
+#        - Path=/ko-ecommerce-category-service/api/v1/categories/*
+#        - Method=PUT
+#        filters:
+#        - RewritePath=/ko-ecommerce-category-service/(?<segment>.*), /$\{segment}
+#        
+#      - id: category-service-delete
+#        uri: lb://ko-ecommerce-category-service
+#        predicates:
+#        - Path=/ko-ecommerce-category-service/api/v1/categories/*
+#        - Method=DELETE
+#        filters:
+#        - RewritePath=/ko-ecommerce-category-service/(?<segment>.*), /$\{segment}
+#      
+#      
+#        
+#      #PRODUCT SERVICE ROUTES
+#        
+#      - id: product-service-get-by-id
+#        uri: lb://ko-ecommerce-product-service
+#        predicates:
+#        - Path=/ko-ecommerce-product-service/api/v1/products/*
+#        - Method=GET
+#        filters:
+#        - RewritePath=/ko-ecommerce-product-service/(?<segment>.*), /$\{segment}
+#        
+#      - id: product-service-get-by-code
+#        uri: lb://ko-ecommerce-product-service
+#        predicates:
+#        - Path=/ko-ecommerce-product-service/api/v1/products/productCode/*
+#        - Method=GET
+#        filters:
+#        - RewritePath=/ko-ecommerce-product-service/(?<segment>.*), /$\{segment}
+#        
+#      - id: product-service-list
+#        uri: lb://ko-ecommerce-product-service
+#        predicates:
+#        - Path=/ko-ecommerce-product-service/api/v1/products
+#        - Method=GET
+#        filters:
+#        - RewritePath=/ko-ecommerce-product-service/(?<segment>.*), /$\{segment}
+#        
+#      - id: product-service-create
+#        uri: lb://ko-ecommerce-product-service
+#        predicates:
+#        - Path=/ko-ecommerce-product-service/api/v1/products
+#        - Method=POST
+#        filters:
+#        - RewritePath=/ko-ecommerce-product-service/(?<segment>.*), /$\{segment}
+#        
+#      - id: product-service-update
+#        uri: lb://ko-ecommerce-product-service
+#        predicates:
+#        - Path=/ko-ecommerce-product-service/api/v1/products/*
+#        - Method=PUT
+#        filters:
+#        - RewritePath=/ko-ecommerce-product-service/(?<segment>.*), /$\{segment}
+#        
+#      - id: product-service-delete
+#        uri: lb://ko-ecommerce-product-service
+#        predicates:
+#        - Path=/ko-ecommerce-product-service/api/v1/products/*
+#        - Method=DELETE
+#        filters:
+#        - RewritePath=/ko-ecommerce-product-service/(?<segment>.*), /$\{segment}
+#        
